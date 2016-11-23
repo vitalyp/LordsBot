@@ -6,7 +6,7 @@ require "rautomation"
 class LordBot
   attr_accessor :win, :win_name, :win_left, :win_top, :win_width, :win_height
 
-  SCREENSHOT_FILENAME = "LordBotScr.bmp"
+  SCREENSHOT_FILENAME = "screen.bmp"
 
   def attach window_name
     @win_name = window_name
@@ -34,11 +34,22 @@ class LordBot
     mouse.click
   end
 
+  def printWinInfo
+    puts "---- win #{@win_name} information:"
+    puts "left: #{@win_left}"
+    puts "top: #{@win_top}"
+    puts "width: #{@win_width}"
+    puts "height: #{@win_height}"
+    puts "---- finish information ----"
+
+  end
+
 end
 
 
 
 bot = LordBot.new
-exit unless bot.attach /Paint/
+exit unless bot.attach /Droid4X/
 bot.click 200, 200
 bot.makeScreenShot
+bot.printWinInfo
